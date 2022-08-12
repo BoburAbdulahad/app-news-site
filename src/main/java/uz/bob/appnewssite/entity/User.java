@@ -5,14 +5,16 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import uz.bob.appnewssite.entity.enums.Permission;
 import uz.bob.appnewssite.entity.template.AbsEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
-import java.util.Collection;
+import java.util.*;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -44,9 +46,38 @@ public class User extends AbsEntity implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+
+        Set<GrantedAuthority> grantedAuthorities=new HashSet<>();
+        List<Permission> permissionList = this.role.getPermissionList();
+        for (Permission permission : permissionList) {
+            grantedAuthorities.add(new SimpleGrantedAuthority(permission.name()));
+        }
+
+        return grantedAuthorities;
+
     }
 
+    public User(String fullName, String username, String password, Role role, boolean enabled) {
+        this.fullName = fullName;
+        this.username = username;
+        this.password = password;
+        this.role = role;
+        this.enabled = enabled;
+    }
+
+    // Permission larni qaytariw boyicha birinchi usuli
+
+    // List<GrantedAuthority> grantedAuthorities=new ArrayList<>();
+//for (Permission permission : permissionList) {
+//        grantedAuthorities.add(new GrantedAuthority() {
+//            @Override
+//            public String getAuthority() {
+//                return permission.name();
+//            }
+//        });
+//    }
+//
+//        return grantedAuthorities;
 
 
 

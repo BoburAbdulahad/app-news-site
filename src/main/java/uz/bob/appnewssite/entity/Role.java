@@ -7,9 +7,7 @@ import lombok.NoArgsConstructor;
 import uz.bob.appnewssite.entity.enums.Permission;
 import uz.bob.appnewssite.entity.template.AbsEntity;
 
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.*;
 import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
@@ -19,8 +17,11 @@ import java.util.List;
 @Entity
 public class Role extends AbsEntity {
 
+    //Column annotatsiyasi keyincalik qoyildi RoleRepository ocilganidan keyin
+    @Column(unique = true,nullable = false)
     private String name;
 
+    @Enumerated(value = EnumType.STRING)
     @ElementCollection(fetch = FetchType.LAZY)
     private List<Permission> permissionList;
 
