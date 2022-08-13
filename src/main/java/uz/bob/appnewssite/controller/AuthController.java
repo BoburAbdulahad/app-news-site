@@ -21,10 +21,25 @@ public class AuthController {
     AuthService authService;
 
     @PostMapping("/register")
-    public HttpEntity<?> registerUser(@Valid @RequestBody RegisterDTO registerDTO){
-        ApiResponse apiResponse=authService.registerUser(registerDTO);
-        return ResponseEntity.status(apiResponse.isSuccess()?200:409).body(apiResponse);
+    public HttpEntity<?> registerUser(@Valid @RequestBody RegisterDTO registerDTO) {
+        ApiResponse apiResponse = authService.registerUser(registerDTO);
+        return ResponseEntity.status(apiResponse.isSuccess() ? 200 : 409).body(apiResponse);
     }
+
+
+//  @Valid un iwlatildi
+//    @ResponseStatus(HttpStatus.BAD_REQUEST)
+//    @ExceptionHandler(MethodArgumentNotValidException.class)
+//    public Map<String, String> handleValidationExceptions(
+//            MethodArgumentNotValidException ex) {
+//        Map<String, String> errors = new HashMap<>();
+//        ex.getBindingResult().getAllErrors().forEach((error) -> {
+//            String fieldName = ((FieldError) error).getField();
+//            String errorMessage = error.getDefaultMessage();
+//            errors.put(fieldName, errorMessage);
+//        });
+//        return errors;
+//    }
 
 
 }

@@ -25,4 +25,6 @@ public class Role extends AbsEntity {
     @ElementCollection(fetch = FetchType.LAZY)
     private List<Permission> permissionList;
 
+    @Column(columnDefinition = "text",length = 600)
+    private String description;
 }

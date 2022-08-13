@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class RegisterDTO {
+public class UserDTO {
 
     @NotNull(message = "fullName is null")
     private String fullName;
@@ -20,6 +20,6 @@ public class RegisterDTO {
     @NotNull(message = "password is null")
     private String password;
 
-    @NotNull(message = "prePassword is null")
-    private String prePassword;
+    @NotNull(message = "roleId is null")
+    private Integer roleId;
 }
