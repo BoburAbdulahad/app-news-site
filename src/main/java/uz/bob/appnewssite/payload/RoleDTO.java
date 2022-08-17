@@ -20,7 +20,7 @@ public class RoleDTO {
 
     private String description;
 
-    @NotEmpty
+    @NotEmpty //permissionList ni bosh bolmasligini ta'minlab beradi
     private List<Permission> permissionList;
 
 }

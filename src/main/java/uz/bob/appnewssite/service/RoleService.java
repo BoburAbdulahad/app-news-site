@@ -25,7 +25,9 @@ public class RoleService {
                 roleDTO.getDescription()
         );
         roleRepository.save(role);
-        return new ApiResponse("Role created",true);
+        return new ApiResponse("Role has been created",true);
     }
+
+
 
 }

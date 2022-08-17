@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import uz.bob.appnewssite.payload.ApiResponse;
+import uz.bob.appnewssite.payload.LoginDTO;
 import uz.bob.appnewssite.payload.RegisterDTO;
 import uz.bob.appnewssite.service.AuthService;
 
@@ -25,6 +26,22 @@ public class AuthController {
         ApiResponse apiResponse = authService.registerUser(registerDTO);
         return ResponseEntity.status(apiResponse.isSuccess() ? 200 : 409).body(apiResponse);
     }
+
+    @PostMapping("/login")
+    public HttpEntity<?> loginUser(@Valid @RequestBody LoginDTO loginDTO){
+        ApiResponse apiResponse=authService.loginUser(loginDTO);
+        return ResponseEntity.status(apiResponse.isSuccess()?200:409).body(apiResponse);
+    }
+
+
+
+
+
+
+
+
+
+
 
 
 //  @Valid un iwlatildi

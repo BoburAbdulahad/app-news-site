@@ -3,6 +3,7 @@ package uz.bob.appnewssite.component;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import uz.bob.appnewssite.entity.Role;
@@ -19,10 +20,17 @@ import java.util.Arrays;
 public class DataLoader implements CommandLineRunner {
     @Autowired
     UserRepository userRepository;
+
     @Autowired
     RoleRepository roleRepository;
+
     @Autowired
     PasswordEncoder passwordEncoder;
+
+//    @Autowired
+//    public DataLoader(PasswordEncoder passwordEncoder) {
+//        this.passwordEncoder = passwordEncoder;
+//    }
 
     @Value("${spring.sql.init.mode}")
     private String initialMode;
