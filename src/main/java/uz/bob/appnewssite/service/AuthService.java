@@ -80,7 +80,7 @@ public class AuthService implements UserDetailsService {
         ));
         User user = (User) authentication.getPrincipal();
         Role role = user.getRole();
-        Set<Role> roles= Collections.singleton(role);
+//        Set<Role> roles= Collections.singleton(role);
 
         String token = jwtProvider.generateToken(user.getUsername(),  role);
         return new ApiResponse("Get a token:",true,token);
