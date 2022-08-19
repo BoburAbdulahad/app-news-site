@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import uz.bob.appnewssite.entity.enums.Permission;
 import uz.bob.appnewssite.entity.template.AbsEntity;
 
@@ -15,6 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 public class Role extends AbsEntity {
 
     //Column annotatsiyasi keyincalik qoyildi RoleRepository ocilganidan keyin
