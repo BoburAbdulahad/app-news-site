@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 import uz.bob.appnewssite.entity.Role;
 
 import java.util.Date;
-import java.util.Set;
 
 @Component
 public class JwtProvider {

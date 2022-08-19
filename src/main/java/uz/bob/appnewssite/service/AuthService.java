@@ -1,7 +1,6 @@
 package uz.bob.appnewssite.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -21,10 +20,6 @@ import uz.bob.appnewssite.repository.UserRepository;
 import uz.bob.appnewssite.security.JwtProvider;
 import uz.bob.appnewssite.utils.AppConstants;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Set;
-
 @Service
 public class AuthService implements UserDetailsService {
 
@@ -43,12 +38,6 @@ public class AuthService implements UserDetailsService {
     @Autowired
     JwtProvider jwtProvider;
 
-//    @Autowired
-//    public AuthService(PasswordEncoder passwordEncoder, AuthenticationManager authenticationManager, JwtProvider jwtProvider) {
-//        this.passwordEncoder = passwordEncoder;
-//        this.authenticationManager = authenticationManager;
-//        this.jwtProvider = jwtProvider;
-//    }
 
 
 
@@ -80,7 +69,7 @@ public class AuthService implements UserDetailsService {
         ));
         User user = (User) authentication.getPrincipal();
         Role role = user.getRole();
-//        Set<Role> roles= Collections.singleton(role);
+//        Set<Role> roles= Collections.singleton(role); //if to be role Set<Role> roles this is work!
 
         String token = jwtProvider.generateToken(user.getUsername(),  role);
         return new ApiResponse("Get a token:",true,token);
