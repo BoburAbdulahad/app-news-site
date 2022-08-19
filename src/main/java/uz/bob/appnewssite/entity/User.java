@@ -19,7 +19,7 @@ import java.util.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "users")
-//@EntityListeners(AuditingEntityListener.class)
+//@EntityListeners(AuditingEntityListener.class) //buni yoqilsa exception beryapti
 public class User extends AbsEntity implements UserDetails {
 
     @Column(nullable = false)

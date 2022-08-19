@@ -6,6 +6,7 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import uz.bob.appnewssite.entity.User;
 
 import javax.persistence.*;
@@ -13,6 +14,7 @@ import java.sql.Timestamp;
 
 @MappedSuperclass
 @Data
+//@EntityListeners(value = AuditingEntityListener.class)
 public abstract class AbsEntity {
 
     @Id
@@ -31,10 +33,10 @@ public abstract class AbsEntity {
     @JoinColumn(updatable = false)
     @CreatedBy
     @ManyToOne(fetch = FetchType.LAZY)
-    private User createdBy;
-
-    @LastModifiedBy
+    private User createdBy; //darsda mana wunday yozilgan edi--->  private User createdBy;
+                             // keyin men ozim uni type ni User dan Long ga ozgartirdim
+    @LastModifiedBy          // cunki createdBy va updatedBy ga yozmayotgan edi
     @ManyToOne(fetch = FetchType.LAZY)
-    private User updatedBy;
+    private User updatedBy;                        //  bu ham  --->private User updatedBy;
 
 }
