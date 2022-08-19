@@ -21,5 +21,5 @@ public class UserDTO {
     private String password;
 
     @NotNull(message = "roleId is null")
-    private Integer roleId;
+    private Long roleId;
 }
