@@ -8,13 +8,16 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import uz.bob.appnewssite.entity.Role;
 import uz.bob.appnewssite.entity.User;
+//import uz.bob.appnewssite.entity.enums.Permission;
 import uz.bob.appnewssite.entity.enums.Permission;
-//import uz.bob.appnewssite.entity.enums.Permission.*; mana shu orqali hammasini caqirib oliw mumkin
+import uz.bob.appnewssite.entity.enums.Permission.*;// mana shu orqali hammasini caqirib oliw mumkin
 import uz.bob.appnewssite.repository.RoleRepository;
 import uz.bob.appnewssite.repository.UserRepository;
 import uz.bob.appnewssite.utils.AppConstants;
 
 import java.util.Arrays;
+
+import static uz.bob.appnewssite.entity.enums.Permission.*;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -48,7 +51,7 @@ public class DataLoader implements CommandLineRunner {
 
             Role user = roleRepository.save(new Role(
                     AppConstants.USER,
-                    Arrays.asList(Permission.ADD_COMMENT, Permission.EDIT_COMMENT, Permission.DELETE_MY_COMMENT),
+                    Arrays.asList(ADD_COMMENT, EDIT_COMMENT, DELETE_MY_COMMENT),
                     "Simple user"
             ));
 

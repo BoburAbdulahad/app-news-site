@@ -1,5 +1,6 @@
 package uz.bob.appnewssite.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -10,6 +11,8 @@ import uz.bob.appnewssite.entity.template.AbsEntity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
+import javax.persistence.OneToMany;
+import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -28,4 +31,7 @@ public class Post extends AbsEntity {
     @Column(nullable = false,columnDefinition = "text")
     private String url;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "post")
+    private List<Comment> comment;
 }

@@ -6,10 +6,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import uz.bob.appnewssite.entity.template.AbsEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -19,10 +16,20 @@ import javax.persistence.ManyToOne;
 public class Comment extends AbsEntity {
 
 
-    @Column(nullable = false,columnDefinition = "text")
+    @Column(nullable = false, columnDefinition = "text")
     private String text;
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Post post;
+
+    public void setPost(Post post) {
+        post.setComment(this.post.getComment());
+        this.post = post;
+    }
+//
+//    @JoinColumn(name = "post_id")
+//    @ManyToOne(optional = false)
+//    private Post post;
+
 }
