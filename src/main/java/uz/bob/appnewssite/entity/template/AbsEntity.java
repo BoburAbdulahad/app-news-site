@@ -29,14 +29,14 @@ public abstract class AbsEntity {
     @UpdateTimestamp
     private Timestamp updatedAt;
 
-
-    @JoinColumn(updatable = false)
+    @Column(updatable = false)
     @CreatedBy
-    @ManyToOne(fetch = FetchType.LAZY)
-    private User createdBy; //darsda mana wunday yozilgan edi--->  private User createdBy;
-                             // keyin men ozim uni type ni User dan Long ga ozgartirdim
+    private Long createdBy; //darsda mana wunday yozilgan edi--->  private User createdBy;
+//    @ManyToOne(fetch = FetchType.LAZY)
+
+    // keyin men ozim uni type ni User dan Long ga ozgartirdim
     @LastModifiedBy          // cunki createdBy va updatedBy ga yozmayotgan edi
-    @ManyToOne(fetch = FetchType.LAZY)
-    private User updatedBy;                        //  bu ham  --->private User updatedBy;
+    private Long updatedBy;                        //  bu ham  --->private User updatedBy;
+//    @ManyToOne(fetch = FetchType.LAZY)
 
 }

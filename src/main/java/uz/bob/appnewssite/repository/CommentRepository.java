@@ -9,4 +9,5 @@ import uz.bob.appnewssite.projection.CustomComment;
 public interface CommentRepository extends JpaRepository<Comment,Long> {
 
 
+
 }

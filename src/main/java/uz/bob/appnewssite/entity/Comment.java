@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import uz.bob.appnewssite.entity.template.AbsEntity;
 
 import javax.persistence.*;
@@ -13,6 +14,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@EntityListeners(value = AuditingEntityListener.class)
 public class Comment extends AbsEntity {
 
 
@@ -23,13 +25,14 @@ public class Comment extends AbsEntity {
     @ManyToOne(fetch = FetchType.EAGER)
     private Post post;
 
-    public void setPost(Post post) {
-        post.setComment(this.post.getComment());
-        this.post = post;
-    }
-//
-//    @JoinColumn(name = "post_id")
-//    @ManyToOne(optional = false)
-//    private Post post;
+    // data rest bn iwlatilganda iwlamadi POST va PUT requestlarda
+//    public void setPost(Post post) {
+//        post.setComment(this.getPost().getComment());
+//        post.setText(this.getPost().getText());
+//        post.setTitle(this.getPost().getTitle());
+//        post.setUrl(this.getPost().getUrl());
+////              this.post = post;
+//    }
+
 
 }

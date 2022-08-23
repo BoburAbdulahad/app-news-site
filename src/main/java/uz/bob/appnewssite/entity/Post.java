@@ -19,7 +19,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-//@EntityListeners(value = AuditingEntityListener.class)
+@EntityListeners(value = AuditingEntityListener.class)
 public class Post extends AbsEntity {
 
     @Column(nullable = false,columnDefinition = "text")
@@ -31,7 +31,8 @@ public class Post extends AbsEntity {
     @Column(nullable = false,columnDefinition = "text")
     private String url;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "post")
-    private List<Comment> comment;
+    // mappedBy orqali boglanish data rest un billa iwlatgan edim
+//    @JsonIgnore
+//    @OneToMany(mappedBy = "post")
+//    private List<Comment> comment;
 }

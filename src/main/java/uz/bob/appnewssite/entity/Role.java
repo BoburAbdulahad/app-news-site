@@ -29,4 +29,6 @@ public class Role extends AbsEntity {
 
     @Column(columnDefinition = "text",length = 600)
     private String description;
+
+
 }
