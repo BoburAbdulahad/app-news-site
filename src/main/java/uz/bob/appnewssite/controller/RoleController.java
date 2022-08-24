@@ -6,6 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+import uz.bob.appnewssite.aop.HuquqniTekshirish;
 import uz.bob.appnewssite.entity.Role;
 import uz.bob.appnewssite.payload.ApiResponse;
 import uz.bob.appnewssite.payload.RoleDTO;
@@ -16,7 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/role")
-public class RoleController {
+public class RoleController extends ResponseEntityExceptionHandler {
 
     @Autowired
     RoleService roleService;
@@ -47,7 +49,8 @@ public class RoleController {
 
     }
 
-    @PreAuthorize("hasAuthority('EDIT_ROLE')")
+//    @PreAuthorize("hasAuthority('EDIT_ROLE')")
+    @HuquqniTekshirish(huquq = "EDIT_ROLE")
     @PutMapping("/{id}")
     public HttpEntity<?> editRole(@PathVariable Long id,
             @Valid @RequestBody RoleDTO roleDTO){

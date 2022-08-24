@@ -9,6 +9,9 @@ import java.sql.Timestamp;
 public interface CustomComment {
 
     String getText();
+    /**
+     * data rest orqali projection ocildi, lekin String getText() ni spring kuzatmayapti;
+     */
 
 
 
